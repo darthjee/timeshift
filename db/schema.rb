@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508021310) do
+ActiveRecord::Schema.define(version: 20150508212932) do
 
   create_table "time_sheet_days", force: true do |t|
     t.string   "observation"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20150508021310) do
     t.integer  "expected",    default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "time_sheet_entries", force: true do |t|
+    t.integer "day_id", null: false
+    t.time    "time",   null: false
+    t.string  "flow",   null: false
   end
 
   create_table "time_sheet_sheets", force: true do |t|
