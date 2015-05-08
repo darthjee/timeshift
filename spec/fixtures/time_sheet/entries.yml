@@ -1,0 +1,5 @@
+first:
+  id: 1
+  day_id: 1
+  time: '08:00:00'
+  flow: 'enter'
