@@ -4,7 +4,7 @@
   app.controller('LoginController', ['$requester', function($http) {
     this.login = function() {
       $http.post('/login.json', {
-        uesr: {
+        user: {
           email: this.email
         }
       });

@@ -2,6 +2,7 @@ class LoginController < ApplicationController
   def create
     User.create(user_params)
     login(email)
+    render nothing: true
   end
 
   def new
