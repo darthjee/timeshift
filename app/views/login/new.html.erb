@@ -1,2 +1,4 @@
-<h1>Login#new</h1>
-<p>Find me in app/views/login/new.html.erb</p>
+<form action="<%= login_path %>" ng-controller="LoginController as loginCtrl" method="post" name="login-form">
+  <input name="email" ng-model="loginCtrl.email" />
+  <input type="submit" value="Login" ng-click="loginCtrl.login()" onclick="return false;"/>
+</form>
