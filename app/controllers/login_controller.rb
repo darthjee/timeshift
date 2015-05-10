@@ -1,8 +1,9 @@
 class LoginController < ApplicationController
   def create
+    binding.pry
     User.find_or_create_by(user_params)
     login(email)
-    render nothing: true
+    render json: { redirect: home_path }
   end
 
   def new
