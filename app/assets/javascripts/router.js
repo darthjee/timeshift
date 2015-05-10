@@ -5,6 +5,5 @@
     this.setPage = function(page) {
       this.page = page + '?ajax=true';
     };
-    this.setPage('/');
   });
 })();
