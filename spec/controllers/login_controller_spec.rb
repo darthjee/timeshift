@@ -4,7 +4,7 @@ RSpec.describe LoginController, :type => :controller do
   let(:user) { users(:user1) }
   let(:email) { user.email }
 
-  describe "POST create" do
+  describe 'POST create' do
     let(:parameters) { { user: { email: user.email } } }
 
     before do
@@ -16,16 +16,20 @@ RSpec.describe LoginController, :type => :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "stores user credentials" do
+      it 'stores user credentials' do
         expect(cookies.signed[:credentials]).to eq(email)
+      end
+
+      it 'does not recreate user' do
+        expect { post :create, parameters }.not_to change { User.count }
       end
     end
 
     context 'when user does not exist' do
-      let(:new_emeail) { 'new_email@new_server.com' }
+      let(:new_email) { 'new_email@new_server.com' }
 
-      it "creates new user" do
-        expect { post :create, parameters }.to change { User.count }
+      it 'creates new user' do
+        expect { post :create, { user: { email: new_email } } }.to change { User.count }
       end
     end
 
@@ -37,15 +41,15 @@ RSpec.describe LoginController, :type => :controller do
     end
   end
 
-  describe "GET new" do
-    it "returns http success" do
+  describe 'GET new' do
+    it 'returns http success' do
       get :new
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET destroy" do
-    it "returns http success" do
+  describe 'GET destroy' do
+    it 'returns http success' do
       get :destroy
       expect(response).to have_http_status(:success)
     end

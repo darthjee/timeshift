@@ -1,6 +1,6 @@
 class LoginController < ApplicationController
   def create
-    User.create(user_params)
+    User.find_or_create_by(user_params)
     login(email)
     render nothing: true
   end
