@@ -4,7 +4,7 @@
   app.factory('$requester', ['$http', function($http) {
     var tokens = {};
     tokens[$('[name="csrf-param"]').attr('content')] = $('[name="csrf-token"]').attr('content');
-    
+
     function requestSettings(url, data, success, dataType) {
       var settings;
 
