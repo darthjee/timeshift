@@ -1,5 +1,6 @@
 class LoginController < ApplicationController
   def create
+    User.create(user_params)
     login(email)
   end
 
@@ -12,10 +13,10 @@ class LoginController < ApplicationController
   private
 
   def email
-    user[:email]
+    user_params[:email]
   end
 
-  def user
+  def user_params
     params.require(:user).permit(:email)
   end
 end

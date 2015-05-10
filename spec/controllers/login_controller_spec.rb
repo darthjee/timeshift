@@ -7,11 +7,11 @@ RSpec.describe LoginController, :type => :controller do
   describe "POST create" do
     let(:parameters) { { user: { email: user.email } } }
 
-    context 'when everything is ok' do
-      before do
-        post :create, parameters
-      end
+    before do
+      post :create, parameters
+    end
 
+    context 'when everything is ok' do
       it do
         expect(response).to have_http_status(:success)
       end
@@ -21,10 +21,17 @@ RSpec.describe LoginController, :type => :controller do
       end
     end
 
+    context 'when user does not exist' do
+      let(:new_emeail) { 'new_email@new_server.com' }
+
+      it "creates new user" do
+        expect { post :create, parameters }.to change { User.count }
+      end
+    end
+
     context 'when user attributes are missed' do
       let(:parameters) { {} }
       it do
-        post :create, parameters
         expect(response).to have_http_status(:bad_request)
       end
     end
