@@ -1,7 +1,7 @@
 (function() {
-  var app = angular.module('login', []);
+  var app = angular.module('login', ['requester']);
 
-  app.controller('LoginController', ['$http', function($http) {
+  app.controller('LoginController', ['$requester', function($http) {
     this.login = function() {
       $http.post('/login.json', {
         uesr: {
