@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="timeshift">
-
-<%= yield %>
-
+  <div class="main-content" ng-controller="RoutesController as router" ng-include="router.page">
+    <%= yield %>
+  </div>
 </body>
 </html>
