@@ -1,3 +1,3 @@
 (function() {
-  var app = angular.module('timeshift', ['router']);
+  var app = angular.module('timeshift', ['router', 'login']);
 })();
