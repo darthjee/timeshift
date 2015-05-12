@@ -16,9 +16,9 @@
           data: data,
           success: success,
           dataType: dataType
-        }
+        };
       };
-      settings.url = settings.url + '?ajax=true'
+      settings.url = settings.url + '?ajax=true';
       _.extend(settings.data, tokens);
       return settings;
     }
@@ -32,6 +32,6 @@
         var settings = requestSettings.apply(this, arguments);
         $http.post.call($http, settings.url, settings.data);
       }
-    }
+    };
   }]);
 })();
