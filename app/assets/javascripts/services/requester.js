@@ -26,11 +26,11 @@
     return {
       get: function() {
         var settings = requestSettings.apply(this, arguments);
-        $http.get.call($http, settings.url, settings.data);
+        return $http.get(settings.url, settings.data);
       },
       post: function() {
         var settings = requestSettings.apply(this, arguments);
-        $http.post.call($http, settings.url, settings.data);
+        return $http.post(settings.url, settings.data);
       }
     };
   }]);
