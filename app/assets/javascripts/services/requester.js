@@ -1,7 +1,5 @@
 (function() {
-  var app = angular.module('requester', []);
-
-  app.factory('$requester', ['$http', function($http) {
+  function RequesterFactory($http) {
     var tokens = {};
     tokens[$('[name="csrf-param"]').attr('content')] = $('[name="csrf-token"]').attr('content');
 
@@ -33,5 +31,9 @@
         return $http.post(settings.url, settings.data);
       }
     };
-  }]);
+  }
+
+  var app = angular.module('requester', []);
+
+  app.factory('$requester', ['$http', RequesterFactory]);
 })();
