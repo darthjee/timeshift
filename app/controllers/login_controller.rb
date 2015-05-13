@@ -1,13 +1,23 @@
 class LoginController < ApplicationController
   def create
+    User.find_or_create_by(user_params)
+    login(email)
+    render json: { redirect: home_path }
   end
 
   def new
   end
 
-  def create
+  def destroy
   end
 
-  def destroy
+  private
+
+  def email
+    user_params[:email]
+  end
+
+  def user_params
+    params.require(:user).permit(:email)
   end
 end
