@@ -1,9 +1,9 @@
 (function() {
-  function Login($scope, $http, $session) {
+  function Login($scope, http, session) {
     this.scope = $scope;
-    this.http = $http;
-    this.session = $session;
-    this.user = $session.get('user');
+    this.http = http;
+    this.session = session;
+    this.user = session.get('user');
     _.bindAll(this, '_redirect');
   }
 
@@ -31,5 +31,5 @@
 
   var app = angular.module('login', ['requester', 'session']);
 
-  app.controller('LoginController', ['$rootScope','$requester', '$session', Login]);
+  app.controller('LoginController', ['$rootScope','requester', 'session', Login]);
 })();

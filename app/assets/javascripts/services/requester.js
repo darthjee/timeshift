@@ -34,5 +34,5 @@
   }
 
   var app = angular.module('requester', []);
-  app.factory('$requester', ['$http', RequesterFactory]);
+  app.factory('requester', ['$http', RequesterFactory]);
 })();

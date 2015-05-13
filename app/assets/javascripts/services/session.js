@@ -19,5 +19,5 @@
 
   var app = angular.module('session', []);
 
-  app.factory('$session', SessionFactory);
+  app.factory('session', SessionFactory);
 })();
