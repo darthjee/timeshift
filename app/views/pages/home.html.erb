@@ -1,1 +1,8 @@
-<%= link_to 'login', login_path, 'ng-click' => "router.setPage('#{login_path}')", onclick: "return false;"%>
+<div ng-controller="LoginController as loginCtrl">
+  <div ng-hide="loginCtrl.user">
+    <%= link_to 'login', login_path, 'ng-click' => "router.setPage('#{login_path}')", onclick: "return false;"%>
+  </div>
+  <div ng-show="loginCtrl.user">
+    Olá {{loginCtrl.user.email}}, seja bem vindo. <%= link_to 'logoff', '#', 'ng-click' => "loginCtrl.logOff()", onclick: "return false;"%>
+  </div>
+</div>
