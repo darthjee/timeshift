@@ -6,8 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="timeshift">
-  <div class="main-content" ng-controller="RoutesController as router" ng-include="router.page || '<%= request.path %>?ajax=true'">
+<body ng-app="timeshift" ng-controller="RoutesController as router" >
+  <div ng-controller="LoginController as loginCtrl">
+    <div ng-hide="loginCtrl.logged()">
+      <%= link_to 'login', login_path, 'ng-click' => "router.setPage('#{login_path}')", onclick: "return false;"%>
+    </div>
+    <div ng-show="loginCtrl.logged()">
+      Olá {{loginCtrl.user.email}}, seja bem vindo. <%= link_to 'logoff', '#', 'ng-click' => "loginCtrl.logOff()", onclick: "return false;"%>
+    </div>
+  </div>
+  <div class="main-content" ng-include="router.page || '<%= request.path %>?ajax=true'">
   </div>
 </body>
 </html>

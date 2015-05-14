@@ -1,5 +1,6 @@
 (function() {
-  function Session() {
+  function Session($scope) {
+    this.scope = $scope;
     this.stored = {};
   };
 
@@ -13,11 +14,11 @@
     return this.stored[key] = value;
   };
 
-  function SessionFactory($http) {
-    return new Session();
+  function SessionFactory($scope) {
+    return new Session($scope);
   }
 
   var app = angular.module('session', []);
 
-  app.factory('session', SessionFactory);
+  app.factory('session', ['$rootScope', SessionFactory]);
 })();
