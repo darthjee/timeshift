@@ -18,6 +18,10 @@
     return new Session($scope);
   }
 
+  fn.logged = function() {
+    return this.get('user');
+  };
+
   var app = angular.module('session', []);
 
   app.factory('session', ['$rootScope', SessionFactory]);
