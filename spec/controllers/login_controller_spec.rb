@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe LoginController, :type => :controller do
+describe LoginController do
   let(:user) { users(:user1) }
   let(:email) { user.email }
 
