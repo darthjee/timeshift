@@ -9,6 +9,10 @@ module LoginConcern
     @user ||= User.find_by(email: user_credentials) if user_credentials
   end
 
+  def logged?
+    user.present?
+  end
+
   private
 
   def user_credentials

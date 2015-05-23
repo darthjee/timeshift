@@ -21,4 +21,20 @@ describe LoginConcern do
       end
     end
   end
+
+  describe '#logged?' do
+    context 'when user is not logged in' do
+      it do
+        expect(controller.logged?).to be_falsey
+      end
+    end
+
+    context 'when user is logged in' do
+      include_context 'user is logged in'
+
+      it do
+        expect(controller.logged?).to be_truthy
+      end
+    end
+  end
 end
