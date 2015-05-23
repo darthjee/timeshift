@@ -5,12 +5,12 @@ module LoginConcern
     cookies.signed[:credentials] = email
   end
 
-  def user
+  def logged_user
     @user ||= User.find_by(email: user_credentials) if user_credentials
   end
 
   def logged?
-    user.present?
+    logged_user.present?
   end
 
   private

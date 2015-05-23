@@ -8,7 +8,7 @@ describe LoginConcern do
   describe '#user' do
     context 'when user is not logged in' do
       it do
-        expect(controller.user).to be_nil
+        expect(controller.logged_user).to be_nil
       end
     end
 
@@ -17,7 +17,7 @@ describe LoginConcern do
       let(:user) { users(:user2) }
 
       it do
-        expect(controller.user).to eq(user)
+        expect(controller.logged_user).to eq(user)
       end
     end
   end
