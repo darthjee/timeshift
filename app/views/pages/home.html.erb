@@ -2,7 +2,7 @@
   <div ng-show="dashCtrl.logged()">
     <ul>
       <li ng-repeat="sheet in dashCtrl.sheets">
-        {{ sheet.name }}
+        <a href="#" ng-click="dashCtrl.openSheet(sheet.id)">{{ sheet.name }}</a>
       </li>
     </ul>
   </div>
