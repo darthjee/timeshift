@@ -1,6 +1,8 @@
 (function() {
-  function DashBoard(session) {
+  function DashBoard(session, http) {
     this.session = session;
+    this.http = http;
+    this._init();
   }
 
   var fn = DashBoard.prototype;
@@ -13,7 +15,16 @@
     return this.session.logged();
   };
 
-  var app = angular.module('dashboard', ['session']);
+  fn._init = function() {
+    _.bindAll(this, '_fillSheets');
+    this.http.get('/sheet.json').success(this._fillSheets);
+  };
 
-  app.controller('DashBoardController', ['session', DashBoard]);
+  fn._fillSheets = function(data) {
+    this.sheets = data.sheets;
+  };
+
+  var app = angular.module('dashboard', ['session', 'requester']);
+
+  app.controller('DashBoardController', ['session', 'requester', DashBoard]);
 })();

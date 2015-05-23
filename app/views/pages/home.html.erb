@@ -1,4 +1,9 @@
 <div ng-controller="DashBoardController as dashCtrl">
   <div ng-show="dashCtrl.logged()">
+    <ul>
+      <li ng-repeat="sheet in dashCtrl.sheets">
+        {{ sheet.name }}
+      </li>
+    </ul>
   </div>
 </div>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TimeSheet::SheetsController do
+describe TimeSheet::SheetController do
 
   describe "GET show" do
     xit "returns http success" do

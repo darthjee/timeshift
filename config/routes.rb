@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :time_sheet, module: :time_sheet, path: '/' do
-    resources :sheet, only: [:create, :show] do
+    resources :sheet, only: [:create, :show, :index] do
     end
   end
 

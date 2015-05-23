@@ -1,5 +1,5 @@
 (function() {
-  function Session($scope) {
+  function Session($scope, http) {
     this.scope = $scope;
     this.stored = {};
   };
