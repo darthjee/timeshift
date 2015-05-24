@@ -1,1 +1,3 @@
-TimeSheet
+<div ng-controller="SheetController as sheetCtrl" ng-init="sheetCtrl.show(<%= sheet_id %>)">
+  <h2><span>{{ sheetCtrl.sheet.name }}</span></h2>
+</div>
