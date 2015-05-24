@@ -14,6 +14,14 @@
 
   fn.setSheet = function(sheet) {
     this.sheet = sheet;
+    this.http.get('/sheet/'+this.sheet.id+'/days.json', {
+      year: this.year,
+      month: this.month
+    }).success(this.setDays);
+  };
+
+  fn.setDays = function(days) {
+    this.days = days;
   };
 
   fn._init = function() {
