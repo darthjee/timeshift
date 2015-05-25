@@ -1,5 +1,5 @@
 class TimeSheet::Day < ActiveRecord::Base
-  belongs_to :sheet
+  belongs_to :month
 
-  validates :sheet, :date, presence: true
+  validates :month, :date, presence: true
 end
