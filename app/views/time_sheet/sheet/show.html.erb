@@ -1,3 +1,12 @@
 <div ng-controller="SheetController as sheetCtrl" ng-init="sheetCtrl.show(<%= sheet_id %>)">
   <h2><span>{{ sheetCtrl.sheet.name }}</span></h2>
+  <input ng-model="sheetCtrl.year" />
+  <input ng-model="sheetCtrl.month" />
+
+  <table>
+    <tr ng-repeat="day in sheetCtrl.days">
+      <td>{{ day.date }}</td>
+      <td>{{ day.observation }}</td>
+    </tr>
+  </table>
 </div>

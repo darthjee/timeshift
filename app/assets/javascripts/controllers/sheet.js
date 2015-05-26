@@ -26,7 +26,7 @@
     date = new Date();
     this.year = date.getFullYear();
     this.month = date.getMonth() + 1;
-    _bindAll(this, 'setSheet', 'setMonth');
+    _.bindAll(this, 'setSheet', 'setMonth');
   };
 
   var app = angular.module('sheet', ['session', 'requester']);
