@@ -1,4 +1,4 @@
-(function() {
+(function(_) {
   function SheetController($scope, http, session) {
     this.session = session;
     this.http = http;
@@ -32,4 +32,4 @@
   var app = angular.module('sheet', ['session', 'requester']);
 
   app.controller('SheetController', ['$rootScope','requester', 'session', SheetController]);
-})();
+})(_);

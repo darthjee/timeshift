@@ -1,4 +1,4 @@
-(function() {
+(function(_) {
   function Router($scope) {
     var controller = this;
     _.bindAll(this, 'setPage');
@@ -22,4 +22,4 @@
   var app = angular.module('router', []);
 
   app.controller('RoutesController', ['$rootScope', Router]);
-})();
+})(_);

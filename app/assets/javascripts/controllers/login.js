@@ -1,4 +1,4 @@
-(function() {
+(function(_) {
   function Login($scope, http, session) {
     this.scope = $scope;
     this.http = http;
@@ -44,4 +44,4 @@
   var app = angular.module('login', ['requester', 'session']);
 
   app.controller('LoginController', ['$rootScope','requester', 'session', Login]);
-})();
+})(_);
