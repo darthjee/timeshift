@@ -14,7 +14,8 @@
 
   fn.setSheet = function(sheet) {
     this.sheet = sheet;
-    this.http.get('/sheet/'+this.sheet.id+'/days.json', {
+    url = ['','sheet',this.sheet.id,this.year,this.month,'days.json'].join('/');
+    this.http.get(url, {
       year: this.year,
       month: this.month
     }).success(this.setDays);
@@ -26,8 +27,8 @@
 
   fn._init = function() {
     date = new Date();
-    this.year = date.getYear();
-    this.month = date.getMonth();
+    this.year = date.getFullYear();
+    this.month = date.getMonth() + 1;
     _.bindAll(this, 'setSheet');
   };
 

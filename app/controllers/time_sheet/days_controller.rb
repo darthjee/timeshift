@@ -6,7 +6,11 @@ class TimeSheet::DaysController < ApplicationController
   private
 
   def days
-    sheet.days.where('date >= ? and date < ?', start_date, end_date).order(:date)
+    sheet_month.days.where('date >= ? and date < ?', start_date, end_date).order(:date)
+  end
+
+  def sheet_month
+    sheet.months.find_by(year: year, month: month)
   end
 
   def start_date
