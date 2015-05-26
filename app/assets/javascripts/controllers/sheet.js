@@ -14,22 +14,19 @@
 
   fn.setSheet = function(sheet) {
     this.sheet = sheet;
-    url = ['','sheet',this.sheet.id,this.year,this.month,'days.json'].join('/');
-    this.http.get(url, {
-      year: this.year,
-      month: this.month
-    }).success(this.setDays);
+    url = ['','sheet', this.sheet.id,'month',this.year,this.month+'.json'].join('/');
+    this.http.get(url).success(this.setMonth);
   };
 
-  fn.setDays = function(days) {
-    this.days = days;
+  fn.setMonth = function(month) {
+    this.days = month.days;
   };
 
   fn._init = function() {
     date = new Date();
     this.year = date.getFullYear();
     this.month = date.getMonth() + 1;
-    _.bindAll(this, 'setSheet');
+    _bindAll(this, 'setSheet', 'setMonth');
   };
 
   var app = angular.module('sheet', ['session', 'requester']);

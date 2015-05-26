@@ -1,13 +1,9 @@
-class TimeSheet::DaysController < ApplicationController
+class TimeSheet::MonthsController < ApplicationController
   def index
-    render json: days
+    render json: sheet_month.to_json(include: :days)
   end
 
   private
-
-  def days
-    sheet_month.days.where('date >= ? and date < ?', start_date, end_date).order(:date)
-  end
 
   def sheet_month
     sheet.months.find_by(year: year, month: month)
