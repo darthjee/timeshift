@@ -2,5 +2,5 @@ first:
   id: 1
   month_id: 1
   observation: 'medic'
-  date: '2015-02-03'
+  day: 3
   expected: 14400
