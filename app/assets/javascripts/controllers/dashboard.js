@@ -1,4 +1,4 @@
-(function() {
+(function(_) {
   function DashBoard($scope, http, session) {
     this.session = session;
     this.http = http;
@@ -32,4 +32,4 @@
   var app = angular.module('dashboard', ['session', 'requester']);
 
   app.controller('DashBoardController', ['$rootScope','requester', 'session', DashBoard]);
-})();
+})(_);
