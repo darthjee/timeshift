@@ -1,0 +1,60 @@
+version: '3'
+services:
+  timeshift_mysql:
+    image: mysql:5.7
+    container_name: timeshift_mysql
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: timeshift
+    ports:
+      - 127.0.0.1:$TIMESHIFT_MYSQL_PORT:3306
+  #################### Base  ####################
+
+  base: &base
+    image: darthjee/timeshift
+    volumes:
+      - ./source:/home/app/app
+    links:
+      - timeshift_mysql:mysql
+    env_file: .env
+
+
+  base_build:
+    <<: *base
+    build:
+      context: .
+      dockerfile: Dockerfile.timeshift
+    command: echo done
+
+  #################### CONTAINERS ####################
+
+  timeshift_app:
+    <<: *base
+    container_name: timeshift_app
+    command: /bin/bash bin/server.sh
+    depends_on: [base_build]
+    ports:
+      - 127.0.0.1:3000:3000
+    environment:
+      - RAILS_ENV=development
+      - TIMESHIFT_MYSQL_PORT=3306
+
+  timeshift_tests:
+    <<: *base
+    container_name: timeshift_tests
+    command: /bin/bash bin/tests.sh
+    depends_on: [base_build]
+    environment:
+      - RAILS_ENV=test
+
+  timeshift_root:
+    <<: *base
+    user: root
+    container_name: timeshift_root
+    command: /bin/bash
+    depends_on: [base_build]
+
+  timeshift_production:
+    env_file: .env.production
+    container_name: timeshift_production
+    image: darthjee/production_timeshift
