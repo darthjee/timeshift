@@ -1,10 +1,10 @@
 FROM darthjee/timeshift-base:0.0.1
 
 WORKDIR /home/app/app
-#COPY --chown=app:app source/Gemfile* /home/app/app/
-#COPY --chown=app:app source/bower.json /home/app/app/
+COPY --chown=app:app source/Gemfile* /home/app/app/
+COPY --chown=app:app source/bower.json /home/app/app/
 
-#RUN bundle install
+RUN bundle install
 
 USER app
-#RUN bower install
+RUN bower install
