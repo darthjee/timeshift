@@ -23,3 +23,7 @@ Style/NumericLiterals:
 Style/StringLiterals:
   Exclude:
     - 'db/schema.rb'
+
+Layout/LineLength:
+  Exclude:
+    - 'bin/bundle'
