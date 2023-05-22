@@ -61,7 +61,7 @@ jobs:
           command: bundle exec rspec
       - run:
           name: Coverage Test Report
-          command: cc-test-reporter after-build -t simplecov -d --exit-code $?
+          command: cc-test-reporter after-build -t simplecov --exit-code $?
 
   checks:
     docker:
