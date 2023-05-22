@@ -186,6 +186,8 @@ Style/ExactRegexpMatch:
 
 Style/FetchEnvVar:
   Enabled: true
+  Exclude:
+    - 'bin/bundle'
 
 Style/FileEmpty:
   Enabled: true
@@ -258,6 +260,8 @@ Style/RedundantArgument:
 
 Style/RedundantConstantBase:
   Enabled: true
+  Exclude:
+    - config/environments/production.rb
 
 Style/RedundantDoubleSplatHashBraces:
   Enabled: true
