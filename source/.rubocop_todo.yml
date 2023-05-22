@@ -26,24 +26,6 @@ Metrics/PerceivedComplexity:
 RSpec/NestedGroups:
   Max: 4
 
-# Offense count: 11
-# Configuration parameters: AllowedConstants.
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/helpers/application_helper.rb'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'app/models/session.rb'
-    - 'app/models/settings.rb'
-    - 'app/models/timeshift.rb'
-    - 'app/models/user.rb'
-    - 'app/models/user/decorator.rb'
-    - 'config/application.rb'
-    - 'db/migrate/20200921122009_create_users.rb'
-    - 'db/migrate/20200921210137_create_sessions.rb'
-
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
