@@ -60,6 +60,12 @@ jobs:
           name: RSpec
           command: bundle exec rspec
       - run:
+          name: DEBUG
+          command: pwd
+      - run:
+          name: DEBUG2
+          command: ls -la ../
+      - run:
           name: Coverage Test Report
           command: cc-test-reporter after-build --exit-code $?
 
