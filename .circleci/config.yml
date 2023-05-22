@@ -60,17 +60,8 @@ jobs:
           name: RSpec
           command: bundle exec rspec
       - run:
-          name: DEBUG
-          command: pwd
-      - run:
-          name: DEBUG2
-          command: ls -la
-      - run:
-          name: DEBUG3
-          command: ls -la ../
-      - run:
           name: Coverage Test Report
-          command: cc-test-reporter after-build --exit-code $?
+          command: cc-test-reporter after-build -t simplecov --exit-code $?
 
   checks:
     docker:
