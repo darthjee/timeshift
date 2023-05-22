@@ -64,6 +64,9 @@ jobs:
           command: pwd
       - run:
           name: DEBUG2
+          command: ls -la
+      - run:
+          name: DEBUG3
           command: ls -la ../
       - run:
           name: Coverage Test Report
