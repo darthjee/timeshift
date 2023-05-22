@@ -88,9 +88,6 @@ jobs:
           name: Bundle Install
           command: bundle install
       - run:
-          name: Debug
-          command: ls -la
-      - run:
           name: Rubocop
           command: rubocop
   build-and-release:
