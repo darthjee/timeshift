@@ -70,3 +70,6 @@ Style/HashTransformValues:
 
 Style/IfUnlessModifier:
   Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
