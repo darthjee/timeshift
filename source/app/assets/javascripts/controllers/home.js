@@ -1,22 +1,7 @@
-(function(_, angular, Cyberhawk) {
-  var app = angular.module("home/controller", [
-    "cyberhawk/controller",
-    "cyberhawk/notifier",
-  ]);
+(function(angular, _) {
+  var module = angular.module('home/controller', ['cyberhawk']);
 
-
-  function Controller(builder, notifier, $location) {
-    this.construct(builder, notifier, $location);
-  }
-
-  var fn = Controller.prototype;
-
-  _.extend(fn, Cyberhawk.Controller.prototype);
-
-  app.controller("Home.Controller", [
-    "cyberhawk_requester", "cyberhawk_notifier", "$location",
-    Controller
-  ]);
-
-  Home.Controller = Controller;
-}(window._, window.angular, window.Cyberhawk));
+  module.config(['cyberhawkProvider', function(provider) {
+    var Controller = provider.$get().controller;
+  }]);
+}(window.angular, window._));

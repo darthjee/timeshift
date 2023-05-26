@@ -13,7 +13,6 @@
     provider.configs = [{
       routes: ["/"],
       config: {
-        controller: "Home.Controller",
         controllerAs: "hc"
       }
     }];
