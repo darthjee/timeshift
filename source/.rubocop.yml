@@ -392,3 +392,5 @@ RSpec/Rails/MinitestAssertions:
 RSpec/Rails/TravelAround:
   Enabled: true
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 8

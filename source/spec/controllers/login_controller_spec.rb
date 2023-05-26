@@ -93,7 +93,7 @@ describe LoginController do
         end
 
         it do
-          expect(response.status).to eq(404)
+          expect(response).to have_http_status(:not_found)
         end
       end
     end
@@ -123,7 +123,7 @@ describe LoginController do
         end
 
         it do
-          expect(response.status).to eq(404)
+          expect(response).to have_http_status(:not_found)
         end
       end
     end
@@ -136,11 +136,11 @@ describe LoginController do
       end
 
       context 'when user is not logged' do
-        let(:session) {}
+        let(:session) { nil }
 
         it { expect(response).not_to be_successful }
 
-        it { expect(response.status).to eq(404) }
+        it { expect(response).to have_http_status(:not_found) }
       end
 
       context 'when user is logged' do
@@ -158,7 +158,7 @@ describe LoginController do
 
         it { expect(response).not_to be_successful }
 
-        it { expect(response.status).to eq(404) }
+        it { expect(response).to have_http_status(:not_found) }
       end
     end
   end
