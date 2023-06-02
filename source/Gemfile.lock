@@ -361,6 +361,7 @@ DEPENDENCIES
   darthjee-core_ext (>= 2.0.0)
   database_cleaner (= 2.0.2)
   factory_bot (= 6.2.1)
+  globalid (>= 1.1.0)
   importmap-rails
   jbuilder
   magicka (~> 1.1.0)
