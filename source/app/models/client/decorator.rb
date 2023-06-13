@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
+class Client < ApplicationRecord
   class Decorator < Azeroth::Decorator
     expose :id
     expose :name
