@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   get '/' => 'home#show', as: :home
 
+  resources :clients
   resources :users, only: [:index] do
     collection do
       resources :login, only: [:create] do
