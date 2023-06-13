@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Client < ApplicationRecord
-  validates_presence_of :name
+  validates :name,
+            presence: true,
+            length: { maximum: 255 }
+
   belongs_to :user
 end
