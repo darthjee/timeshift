@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   validates_presence_of :name, :login, :email, :encrypted_password
   has_many :sessions
+  has_many :clients
+  has_many :accounts
 
   validates :login,
             presence: true,

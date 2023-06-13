@@ -5,6 +5,10 @@ require: rubocop-rspec
 AllCops:
   TargetRubyVersion: 2.7
 
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+
 Style/Documentation:
   Enabled: false
 
