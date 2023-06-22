@@ -15,6 +15,8 @@
       config: {
         controllerAs: "hc"
       }
+    }, {
+      routes: ["/clients/new", "/clients/:id", "/clients", "/clients/:id/edit"]
     }];
     provider.$get().bindRoutes();
   }]);
