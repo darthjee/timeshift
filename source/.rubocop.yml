@@ -397,4 +397,4 @@ RSpec/Rails/TravelAround:
   Enabled: true
 
 RSpec/MultipleMemoizedHelpers:
-  Max: 8
+  Enabled: false
