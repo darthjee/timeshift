@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
   include OnePageApplication
   include LoggedUser
 
-  protect_from_forgery except: [:create]
+  protect_from_forgery except: [:create, :update]
 
   resource_for :client,
                paginated: true,
