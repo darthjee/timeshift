@@ -3,15 +3,14 @@
 require 'spec_helper'
 
 describe ClientsController do
-  let(:session)     { create(:session, user: logged_user) }
+  let(:session) { create(:session, user: logged_user) }
+  let(:expected_json) do
+    Client::Decorator.new(expected_object).to_json
+  end
   let(:logged_user) { create(:user) }
 
   before do
     controller.send(:cookies).signed[:session] = session.id
-  end
-
-  let(:expected_json) do
-    Client::Decorator.new(expected_object).to_json
   end
 
   describe 'GET new' do
@@ -109,7 +108,7 @@ describe ClientsController do
       end
 
       context 'when requesting last page' do
-        let(:clients_count)  { 21 }
+        let(:clients_count) { 21 }
         let(:expected_object) { Client.offset(20) }
         let(:parameters)      { { page: 3 } }
 
