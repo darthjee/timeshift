@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav" ng-show="headerController.logged>"
         <li class="nav-item p-2">
-          <a
+          <a class="nav-link"
             href="<%= angular_path_to(:clients) %>">
             Clients
           </a>
@@ -25,6 +25,7 @@
       <ul class="nav navbar-nav">
         <li ng-hide="headerController.logged">
           <a
+            class="nav-link"
             ng-hide="headerController.ongoing"
             data-toggle="modal"
             href="#"
@@ -34,6 +35,7 @@
         </li>
         <li ng-show="headerController.logged">
           <a
+            class="nav-link"
             ng-hide="headerController.ongoing"
             data-toggle="modal"
             href="#"
