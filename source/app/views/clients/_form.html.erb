@@ -18,11 +18,12 @@
           )
         end %>
         <%= form.only(:display) do
-          form.button(
-            classes: 'btn-primary',
-            href: angular_path_to(:edit_client, { id: "{{gnc.data.id}}" }),
-            text: 'Edit'
-          )
+          angular_safe_link_to(
+            :edit_client, { id: "{{gnc.data.id}}" },
+            class: 'btn btn-primary'
+          ) do
+            'Edit'
+          end
         end %>
       </div>
     </div>
