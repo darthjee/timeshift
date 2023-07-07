@@ -12,4 +12,8 @@ Rails.application.routes.draw do
       delete '/logoff' => 'login#logoff'
     end
   end
+
+  namespace :admin do
+    resources :users
+  end
 end
