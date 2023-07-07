@@ -16,6 +16,8 @@
         controllerAs: "hc"
       }
     }, {
+      routes: ["/admin/users/new", "/admin/users/:id", "/admin/users", "/admin/users/:id/edit"]
+    }, {
       routes: ["/clients/new", "/clients/:id", "/clients", "/clients/:id/edit"]
     }];
     provider.$get().bindRoutes();
