@@ -35,7 +35,7 @@ module LoggedUser
 
     def new_session
       @session = logged_user.sessions.create(
-        expiration: Settings.session_period.from_now
+        expiration: EnvSettings.session_period.from_now
       )
     end
 

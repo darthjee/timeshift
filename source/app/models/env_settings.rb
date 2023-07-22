@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Settings
+class EnvSettings
   extend Sinclair::EnvSettable
 
   settings_prefix 'TIMESHIFT'
