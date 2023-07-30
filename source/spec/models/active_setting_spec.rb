@@ -11,6 +11,11 @@ describe ActiveSetting do
     end
 
     it do
+      expect(active_setting).to validate_uniqueness_of(:key)
+        .case_insensitive
+    end
+
+    it do
       expect(active_setting).to validate_length_of(:key)
         .is_at_most(50)
     end
