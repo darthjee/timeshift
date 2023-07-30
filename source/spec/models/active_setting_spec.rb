@@ -29,4 +29,34 @@ describe ActiveSetting do
         .is_at_most(255)
     end
   end
+
+  describe 'key=' do
+    subject(:active_setting) do
+      build(:active_setting, key: key)
+    end
+
+    context 'when the value is upcase' do
+      let(:key) { 'SOME_KEY' }
+
+      it 'converts to lowercase' do
+        expect(active_setting.key).to eq('some_key')
+      end
+    end
+
+    context 'when the value is nil' do
+      let(:key) { nil }
+
+      it do
+        expect(active_setting.key).to be_nil
+      end
+    end
+
+    context 'when the value is a symbol' do
+      let(:key) { :some_key }
+
+      it 'converts to string' do
+        expect(active_setting.key).to eq('some_key')
+      end
+    end
+  end
 end

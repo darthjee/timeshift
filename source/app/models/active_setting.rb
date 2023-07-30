@@ -9,4 +9,8 @@ class ActiveSetting < ApplicationRecord
   validates :value,
             presence: true,
             length: { maximum: 255 }
+
+  def key=(key)
+    super(key&.to_s&.downcase)
+  end
 end
