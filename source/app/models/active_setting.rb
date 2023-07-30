@@ -4,7 +4,8 @@ class ActiveSetting < ApplicationRecord
   validates :key,
             presence: true,
             length: { maximum: 50 },
-            uniqueness: true
+            uniqueness: true,
+            format: { with: /\A[a-z_][a-z0-9_]*\Z/ }
   validates :value,
             presence: true,
             length: { maximum: 255 }

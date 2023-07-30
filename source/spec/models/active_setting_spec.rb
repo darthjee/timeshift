@@ -3,7 +3,9 @@
 require 'spec_helper'
 
 describe ActiveSetting do
-  subject(:active_setting) { build(:active_setting) }
+  subject(:active_setting) { build(:active_setting, key: key) }
+
+  let(:key) { SecureRandom.hex(16) }
 
   describe 'validations' do
     it do
@@ -20,6 +22,48 @@ describe ActiveSetting do
         .is_at_most(50)
     end
 
+    context 'when key has all accepted characters' do
+      let(:key) { 'some0_key' }
+
+      it { is_expected.to be_valid }
+    end
+
+    context 'when key has spaces character' do
+      let(:key) { 'some key' }
+
+      it { is_expected.to be_invalid }
+    end
+
+    context 'when key has dash character' do
+      let(:key) { 'some-key' }
+
+      it { is_expected.to be_invalid }
+    end
+
+    context 'when key has number in the first character' do
+      let(:key) { '0some_key' }
+
+      it { is_expected.to be_invalid }
+    end
+
+    context 'when key has number in the last character' do
+      let(:key) { 'some_key0' }
+
+      it { is_expected.to be_valid }
+    end
+
+    context 'when key has an underscore in the first character' do
+      let(:key) { '_some_key' }
+
+      it { is_expected.to be_valid }
+    end
+
+    context 'when key has an underscore in the last character' do
+      let(:key) { '_some_key_' }
+
+      it { is_expected.to be_valid }
+    end
+
     it do
       expect(active_setting).to validate_presence_of(:value)
     end
@@ -31,10 +75,6 @@ describe ActiveSetting do
   end
 
   describe 'key=' do
-    subject(:active_setting) do
-      build(:active_setting, key: key)
-    end
-
     context 'when the value is upcase' do
       let(:key) { 'SOME_KEY' }
 
