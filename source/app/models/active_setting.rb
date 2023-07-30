@@ -3,8 +3,7 @@
 class ActiveSetting < ApplicationRecord
   validates :key,
             presence: true,
-            length: { maximum: 50 }
-  validates :key,
+            length: { maximum: 50 },
             uniqueness: true
   validates :value,
             presence: true,
