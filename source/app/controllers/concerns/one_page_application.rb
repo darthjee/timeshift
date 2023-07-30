@@ -45,7 +45,7 @@ module OnePageApplication
   def cache_control
     return unless html?
 
-    headers['Cache-Control'] = "max-age=#{EnvSettings.cache_age}, public"
+    headers['Cache-Control'] = "max-age=#{Settings.cache_age}, public"
     request.session_options[:skip] = true
   end
 end

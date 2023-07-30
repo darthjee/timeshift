@@ -50,11 +50,11 @@ describe LoggedUser::Processor do
       end
 
       it 'creates a session with expiration date' do
-        expect(session.expiration).to be <= EnvSettings.session_period.from_now
+        expect(session.expiration).to be <= Settings.session_period.from_now
       end
 
       it 'creates a session with expiration date in the future' do
-        expect(session.expiration).to be >= (EnvSettings.session_period.from_now - 2.second)
+        expect(session.expiration).to be >= (Settings.session_period.from_now - 2.second)
       end
     end
   end

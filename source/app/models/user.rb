@@ -36,7 +36,7 @@ class User < ApplicationRecord
   private
 
   def encrypt_password(pass)
-    plain = salt + pass + EnvSettings.password_salt
+    plain = salt + pass + Settings.password_salt
     Digest::SHA256.hexdigest(plain)
   end
 end
