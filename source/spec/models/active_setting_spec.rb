@@ -74,6 +74,42 @@ describe ActiveSetting do
     end
   end
 
+  describe '.for_key' do
+    subject(:active_setting) { create(:active_setting) }
+
+    context 'when entry exist' do
+      let(:value) { active_setting.value }
+
+      context 'when key upcase key is sent' do
+        let(:key) { active_setting.key.upcase }
+
+        it 'returns value from database' do
+          expect(described_class.value_for(key)).to eq(value)
+        end
+      end
+
+      context 'when key downcase key is sent' do
+        let(:key) { active_setting.key.downcase }
+
+        it 'returns value from database' do
+          expect(described_class.value_for(key)).to eq(value)
+        end
+      end
+    end
+
+    context 'when entry does not exist' do
+      let(:key) { 'other_key' }
+      
+      it { expect(described_class.value_for(key)).to be_nil }
+    end
+
+    context 'when passing a nil key' do
+      let(:key) { nil }
+      
+      it { expect(described_class.value_for(key)).to be_nil }
+    end
+  end
+
   describe 'key=' do
     context 'when the value is upcase' do
       let(:key) { 'SOME_KEY' }

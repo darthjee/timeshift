@@ -10,7 +10,21 @@ class ActiveSetting < ApplicationRecord
             presence: true,
             length: { maximum: 255 }
 
+  class << self
+    def value_for(key)
+      return unless key
+
+      find_by(key: convert_key(key))&.value
+    end
+
+    def convert_key(key)
+      return unless key
+
+      key.to_s.downcase
+    end
+  end
+
   def key=(key)
-    super(key&.to_s&.downcase)
+    super(self.class.convert_key(key))
   end
 end
