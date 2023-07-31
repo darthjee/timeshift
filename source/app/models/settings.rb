@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Settings
-  extend Sinclair::EnvSettable
+  extend Sinclair::ChainSettable
 
-  settings_prefix 'TIMESHIFT'
+  source :env, EnvSettings
 
   with_settings(
     :password_salt,
