@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_141910) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_014647) do
   create_table "accounts", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "active_settings", charset: "utf8", force: :cascade do |t|
+    t.string "key", limit: 50, null: false
+    t.string "value", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_active_settings_on_key", unique: true
   end
 
   create_table "clients", charset: "utf8", force: :cascade do |t|
