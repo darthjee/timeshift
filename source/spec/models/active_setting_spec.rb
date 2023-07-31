@@ -99,13 +99,13 @@ describe ActiveSetting do
 
     context 'when entry does not exist' do
       let(:key) { 'other_key' }
-      
+
       it { expect(described_class.value_for(key)).to be_nil }
     end
 
     context 'when passing a nil key' do
       let(:key) { nil }
-      
+
       it { expect(described_class.value_for(key)).to be_nil }
     end
   end
