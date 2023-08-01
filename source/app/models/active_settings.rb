@@ -9,6 +9,6 @@ class ActiveSettings
     :session_period,
     :cache_age,
     :title,
-    :favicon,
+    :favicon
   )
 end
