@@ -24,55 +24,7 @@ describe Settings do
     end
   end
 
-  describe 'password_salt' do
-    context 'when nothing is set set' do
-      let(:env_hash) do
-        { timeshift_password_salt: nil }
-      end
-
-      it do
-        expect(settings.password_salt).to be_nil
-      end
-    end
-
-    context 'when only env is set' do
-      let(:password_salt) { SecureRandom.hex(32) }
-
-      let(:env_hash) do
-        { timeshift_password_salt: password_salt }
-      end
-
-      it 'returns the value from env' do
-        expect(settings.password_salt).to eq(password_salt)
-      end
-    end
-
-    context 'when only db is set' do
-      let(:password_salt) { SecureRandom.hex(32) }
-
-      before do
-        create(:active_setting, key: :password_salt, value: password_salt)
-      end
-
-      it 'returns the value from db' do
-        expect(settings.password_salt).to eq(password_salt)
-      end
-    end
-
-    context 'when env and db are set' do
-      let(:password_salt) { SecureRandom.hex(32) }
-
-      let(:env_hash) do
-        { timeshift_password_salt: password_salt }
-      end
-
-      before do
-        create(:active_setting, key: :password_salt)
-      end
-
-      it 'returns the value from env' do
-        expect(settings.password_salt).to eq(password_salt)
-      end
-    end
+  describe '.password_salt' do
+    it_behaves_like "a setting", :password_salt
   end
 end
