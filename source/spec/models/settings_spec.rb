@@ -30,8 +30,10 @@ describe Settings do
 
   describe '.hex_code_size' do
     it_behaves_like "a setting", :hex_code_size do
-      let(:default_value) { 16 }
-      let(:value)         { Random.rand(10..15) }
+      let(:default_value)  { 16 }
+      let(:value)          { Random.rand(10..15) }
+      let(:expected_class) { Integer }
+      let(:expected_default_class) { Integer }
     end
   end
 end

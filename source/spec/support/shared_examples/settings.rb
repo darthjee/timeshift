@@ -1,6 +1,8 @@
 shared_examples "a setting" do |field|
-  let(:value) { SecureRandom.hex(32) }
-  let(:default_value) { nil }
+  let(:value)          { SecureRandom.hex(32) }
+  let(:default_value)  { nil }
+  let(:expected_class) { String }
+  let(:expected_default_class) { NilClass }
 
   let(:env_hash) do
     { "timeshift_#{field}" => nil }
@@ -8,6 +10,10 @@ shared_examples "a setting" do |field|
 
   it do
     expect(settings.public_send(field)).to eq(default_value)
+  end
+
+  it do
+    expect(settings.public_send(field)).to be_a(expected_default_class)
   end
 
   context 'when only env is set' do
@@ -18,6 +24,10 @@ shared_examples "a setting" do |field|
     it 'returns the value from env' do
       expect(settings.public_send(field)).to eq(value)
     end
+
+    it do
+      expect(settings.public_send(field)).to be_a(expected_class)
+    end
   end
 
   context 'when only db is set' do
@@ -27,6 +37,10 @@ shared_examples "a setting" do |field|
 
     it 'returns the value from db' do
       expect(settings.public_send(field)).to eq(value)
+    end
+
+    it do
+      expect(settings.public_send(field)).to be_a(expected_class)
     end
   end
 
@@ -41,6 +55,10 @@ shared_examples "a setting" do |field|
 
     it 'returns the value from env' do
       expect(settings.public_send(field)).to eq(value)
+    end
+
+    it do
+      expect(settings.public_send(field)).to be_a(expected_class)
     end
   end
 end
