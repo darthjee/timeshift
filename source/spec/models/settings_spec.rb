@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Settings do
   subject(:settings) do
-    Class.new(Settings).tap do |klass|
+    Class.new(described_class).tap do |klass|
       klass.send(:source, :env, Class.new(EnvSettings))
       klass.send(:source, :db,  Class.new(ActiveSettings))
     end
@@ -19,7 +19,7 @@ describe Settings do
   end
 
   after do
-    env_hash.keys.each do |key|
+    env_hash.each_key do |key|
       ENV.delete(key.to_s.upcase)
     end
   end
