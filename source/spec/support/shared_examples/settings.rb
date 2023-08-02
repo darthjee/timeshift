@@ -1,17 +1,16 @@
 shared_examples "a setting" do |field|
-  context 'when nothing is set set' do
-    let(:env_hash) do
-      { "timeshift_#{field}" => nil }
-    end
+  let(:value) { SecureRandom.hex(32) }
+  let(:default_value) { nil }
 
-    it do
-      expect(settings.public_send(field)).to be_nil
-    end
+  let(:env_hash) do
+    { "timeshift_#{field}" => nil }
+  end
+
+  it do
+    expect(settings.public_send(field)).to eq(default_value)
   end
 
   context 'when only env is set' do
-    let(:value) { SecureRandom.hex(32) }
-
     let(:env_hash) do
       { "timeshift_#{field}" => value }
     end
@@ -22,8 +21,6 @@ shared_examples "a setting" do |field|
   end
 
   context 'when only db is set' do
-    let(:value) { SecureRandom.hex(32) }
-
     before do
       create(:active_setting, key: field, value: value)
     end
@@ -34,8 +31,6 @@ shared_examples "a setting" do |field|
   end
 
   context 'when env and db are set' do
-    let(:value) { SecureRandom.hex(32) }
-
     let(:env_hash) do
       { "timeshift_#{field}" => value }
     end
@@ -48,5 +43,4 @@ shared_examples "a setting" do |field|
       expect(settings.public_send(field)).to eq(value)
     end
   end
-
 end

@@ -14,7 +14,7 @@ describe Settings do
 
   before do
     env_hash.each do |key, value|
-      ENV[key.to_s.upcase] = value
+      ENV[key.to_s.upcase] = value&.to_s
     end
   end
 
@@ -26,5 +26,12 @@ describe Settings do
 
   describe '.password_salt' do
     it_behaves_like "a setting", :password_salt
+  end
+
+  describe '.hex_code_size' do
+    it_behaves_like "a setting", :hex_code_size do
+      let(:default_value) { 16 }
+      let(:value)         { Random.rand(10..15) }
+    end
   end
 end
