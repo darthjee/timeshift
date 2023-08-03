@@ -25,13 +25,13 @@ describe Settings do
   end
 
   describe '.password_salt' do
-    it_behaves_like "a setting", :password_salt do
+    it_behaves_like 'a setting', :password_salt do
       let(:expected_default_class) { NilClass }
     end
   end
 
   describe '.hex_code_size' do
-    it_behaves_like "a setting", :hex_code_size do
+    it_behaves_like 'a setting', :hex_code_size do
       let(:default_value)  { 16 }
       let(:value)          { Random.rand(10..15) }
       let(:expected_class) { Integer }
@@ -39,7 +39,7 @@ describe Settings do
   end
 
   describe '.session_period' do
-    it_behaves_like "a setting", :session_period do
+    it_behaves_like 'a setting', :session_period do
       let(:default_value)  { 2.days }
       let(:value)          { Random.rand(3600..7200) }
       let(:expected_class) { ActiveSupport::Duration }

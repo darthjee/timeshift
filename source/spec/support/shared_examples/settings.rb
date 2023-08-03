@@ -1,4 +1,6 @@
-shared_examples "a setting" do |field|
+# frozen_string_literal: true
+
+shared_examples 'a setting' do |field|
   let(:value)          { SecureRandom.hex(32) }
   let(:default_value)  { nil }
   let(:expected_class) { String }
