@@ -3,7 +3,7 @@
 class Sinclair
   module Settable
     class Caster
-      cast_with(:seconds, &:seconds)
+      cast_with(:seconds) { |value| value.to_i.seconds }
     end
   end
 end
