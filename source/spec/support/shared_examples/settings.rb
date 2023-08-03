@@ -2,7 +2,7 @@ shared_examples "a setting" do |field|
   let(:value)          { SecureRandom.hex(32) }
   let(:default_value)  { nil }
   let(:expected_class) { String }
-  let(:expected_default_class) { NilClass }
+  let(:expected_default_class) { expected_class }
 
   let(:env_hash) do
     { "timeshift_#{field}" => nil }
