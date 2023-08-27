@@ -15,5 +15,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+
+    scope path: :settup, controller: :settup do
+      get '/' => :home
+    end
   end
 end
