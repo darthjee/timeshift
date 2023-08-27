@@ -25,8 +25,18 @@ describe Settings do
   end
 
   describe '.password_salt' do
-    it_behaves_like 'a setting', :password_salt do
-      let(:expected_default_class) { NilClass }
+    context 'when nothing is set' do
+      it_behaves_like 'a setting', :password_salt do
+        let(:expected_default_class) { NilClass }
+      end
+    end
+
+    context 'when a value is set' do
+      it_behaves_like 'a setting', :password_salt do
+        let(:value)                  { SecureRandom.hex(10) }
+        let(:expected_default_class) { NilClass }
+        let(:expected_class)         { String }
+      end
     end
   end
 
