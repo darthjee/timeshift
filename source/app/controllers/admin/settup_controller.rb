@@ -4,8 +4,8 @@ module Admin
   class SettupController < ApplicationController
     include OnePageApplication
 
-    redirection_rule :redirect_root, :is_set?
-    skip_redirection_rule :render_root, :is_set?
+    redirection_rule :redirect_root, :set?
+    skip_redirection_rule :render_root, :set?
 
     resource_for :active_setting, only: :index
 
@@ -15,7 +15,7 @@ module Admin
       '/#/'
     end
 
-    def is_set?
+    def set?
       Settings.set
     end
   end

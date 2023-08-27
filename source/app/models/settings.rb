@@ -4,7 +4,7 @@ class Sinclair
   module Settable
     class Caster
       cast_with(:seconds) { |value| value.to_i.seconds }
-      cast_with(:boolean) { |value| value == "true" }
+      cast_with(:boolean) { |value| value == 'true' }
     end
   end
 end
