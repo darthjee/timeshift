@@ -18,6 +18,18 @@ fdescribe Admin::SettupController do
 
         it { expect(response).to render_template('admin/settup/home') }
       end
+
+      context 'when it has been set already' do
+        before do
+          allow(Settings).to receive(:set).and_return(true)
+
+          get :home, params: parameters
+        end
+
+        it { expect(response).to redirect_to('/#/') }
+
+        it { expect(response).not_to render_template('admin/settup/home') }
+      end
     end
   end
 end
