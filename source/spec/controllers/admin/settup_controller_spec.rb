@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 fdescribe Admin::SettupController do
+  let(:parameters) { {} }
+
   describe 'GET home' do
     render_views
 
@@ -17,6 +19,30 @@ fdescribe Admin::SettupController do
         it { expect(response).to be_successful }
 
         it { expect(response).to render_template('admin/settup/home') }
+      end
+
+      context 'when it has been set already' do
+        before do
+          allow(Settings).to receive(:set).and_return(true)
+
+          get :home, params: parameters
+        end
+
+        it { expect(response).to redirect_to('/#/') }
+
+        it { expect(response).not_to render_template('admin/settup/home') }
+      end
+    end
+
+    context 'when not passing ajax' do
+      context 'when it has not been set yet' do
+        before do
+          get :home, params: parameters
+        end
+
+        it { expect(response).to redirect_to('#/admin/settup') }
+
+        it { expect(response).not_to render_template('admin/settup/home') }
       end
 
       context 'when it has been set already' do
