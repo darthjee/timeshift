@@ -7,8 +7,7 @@ module Admin
     redirection_rule :redirect_root, :is_set?
     skip_redirection_rule :render_root, :is_set?
 
-    def home
-    end
+    resource_for :active_setting, only: :index
 
     private
 

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :users
 
     scope path: :settup, controller: :settup do
-      get '/' => :home
+      get '/' => :index
     end
   end
 end
