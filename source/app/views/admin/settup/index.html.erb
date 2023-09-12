@@ -1,40 +1,52 @@
 <form class="form-horizontal">
   <% magicka_form('gnc.data') do |form| %>
+    <% magicka_form('gnc.data.admin') do |admin| %>
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">
+            Admin User
+          </h4>
+        </div>
+        <div class="card-body">
+          <%= admin.input(:name, placeholder: "Name") %>
+          <%= admin.input(:login, placeholder: "Login") %>
+          <%= admin.input(:email, placeholder: "Email") %>
+          <%= admin.input(:password, placeholder: "Password") %>
+          <%= admin.input(:confirm_password, placeholder: "Password") %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="card shadow-sm">
       <div class="card-header">
         <h4 class="my-0 font-weight-normal">
-          Admin User
+          Settings
         </h4>
       </div>
       <div class="card-body">
-        <%= form.input(:name, placeholder: "Name") %>
-        <%= form.input(:login, placeholder: "Login") %>
-        <%= form.input(:email, placeholder: "Email") %>
-        <%= form.input(:password, placeholder: "Password") %>
-        <%= form.input(:confirm_password, placeholder: "Password") %>
-
-        <div class="form-group row">
-          <div class="offset-2 col-10">
-            <%= form.only(:form) do
-              form.button(
-                ng_click: 'gnc.save()',
-                ng_disabled: 'gnc.ongoing',
-                classes: 'btn-primary',
-                text: 'Save'
-              )
-            end %>
-            <%= form.only(:display) do
-              angular_safe_link_to(
-                :edit_client, { id: "{{gnc.data.id}}" },
-                class: 'btn btn-primary'
-              ) do
-                'Edit'
-              end
-            end %>
-          </div>
-        </div>
+        Settings list
       </div>
     </div>
 
+    <div class="form-group row">
+      <div class="offset-2 col-10">
+        <%= form.only(:form) do
+          form.button(
+            ng_click: 'gnc.save()',
+            ng_disabled: 'gnc.ongoing',
+            classes: 'btn-primary',
+            text: 'Save'
+          )
+        end %>
+        <%= form.only(:display) do
+          angular_safe_link_to(
+            :edit_client, { id: "{{gnc.data.id}}" },
+            class: 'btn btn-primary'
+          ) do
+            'Edit'
+          end
+        end %>
+      </div>
+    </div>
   <% end %>
 </form>
