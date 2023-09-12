@@ -1,21 +1,6 @@
 <form class="form-horizontal">
   <% magicka_form('gnc.data') do |form| %>
-    <% magicka_form('gnc.data.admin') do |admin| %>
-      <div class="card shadow-sm">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">
-            Admin User
-          </h4>
-        </div>
-        <div class="card-body">
-          <%= admin.input(:name, placeholder: "Name") %>
-          <%= admin.input(:login, placeholder: "Login") %>
-          <%= admin.input(:email, placeholder: "Email") %>
-          <%= admin.input(:password, placeholder: "Password") %>
-          <%= admin.input(:confirm_password, placeholder: "Password") %>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: 'admin_form' %>
 
     <div class="card shadow-sm">
       <div class="card-header">
