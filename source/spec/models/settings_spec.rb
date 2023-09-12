@@ -55,4 +55,13 @@ describe Settings do
       let(:expected_class) { ActiveSupport::Duration }
     end
   end
+
+  describe '.set' do
+    it_behaves_like 'a setting', :set do
+      let(:default_value)          { false }
+      let(:value)                  { true }
+      let(:expected_default_class) { FalseClass }
+      let(:expected_class)         { TrueClass }
+    end
+  end
 end

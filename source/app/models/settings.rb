@@ -4,6 +4,7 @@ class Sinclair
   module Settable
     class Caster
       cast_with(:seconds) { |value| value.to_i.seconds }
+      cast_with(:boolean) { |value| value == 'true' }
     end
   end
 end
@@ -20,4 +21,5 @@ class Settings
   setting_with_options(:cache_age, default: 10.seconds, type: :seconds)
   setting_with_options(:title, default: 'Timeshift')
   setting_with_options(:favicon, default: '/favicon.ico')
+  setting_with_options(:set, default: false, type: :boolean)
 end
