@@ -7,7 +7,7 @@ module Admin
     redirection_rule :redirect_root, :set?
     skip_redirection_rule :render_root, :set?
 
-    resource_for :active_setting, only: :index
+    resource_for :settup, only: :index
 
     private
 
