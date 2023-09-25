@@ -1,18 +1,20 @@
 # frozen_string_literal: true
 
-class Settup < Sinclair::Model
-  initialize_with :admin, :settings
+module Admin
+  class Settup < Sinclair::Model
+    initialize_with :admin, :settings
 
-  class << self
-    def attribute_names
-      [:admin]
-    end
+    class << self
+      def attribute_names
+        [:admin]
+      end
 
-    def all
-      self.new(
-        admin: User.admin.find_or_initialize_by({}),
-        settings: ActiveSetting.all 
-      )
+      def all
+        self.new(
+          admin: User.admin.find_or_initialize_by({}),
+          settings: ActiveSetting.all 
+        )
+      end
     end
   end
 end
