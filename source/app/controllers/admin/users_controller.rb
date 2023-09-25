@@ -7,6 +7,7 @@ module Admin
     protect_from_forgery except: %i[create update]
 
     resource_for :user,
+                 decorator: User::InternalDecorator,
                  paginated: true,
                  per_page: 10
 
@@ -14,7 +15,7 @@ module Admin
 
     def user_params
       params.permit(
-        *%w[name login email password]
+        *%w[name login email password admin]
       )
     end
   end

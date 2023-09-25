@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Admin::UsersController do
   let(:expected_json) do
-    User::Decorator.new(expected_object).to_json
+    User::InternalDecorator.new(expected_object).to_json
   end
 
   describe 'GET new' do
@@ -182,7 +182,7 @@ describe Admin::UsersController do
 
         let(:user_attributes) do
           user.attributes.reject do |key, _|
-            %w[id created_at updated_at encrypted_password salt]
+            %w[id created_at updated_at encrypted_password salt admin]
               .include? key
           end
         end
