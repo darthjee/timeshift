@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_014647) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_232051) do
   create_table "accounts", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "user_id", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_014647) do
     t.string "salt", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["login"], name: "index_users_on_login", unique: true
   end
