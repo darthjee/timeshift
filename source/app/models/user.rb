@@ -16,6 +16,8 @@ class User < ApplicationRecord
             presence: true,
             length: { maximum: 100 }
 
+  scope :admin, -> { where(admin: true) }
+
   def self.login(login:, password:)
     User.find_by!(login: login).verify_password!(password)
   rescue ActiveRecord::RecordNotFound

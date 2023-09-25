@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class Settup
-  include ActiveModel::Model
-  
-  attr_reader :admin
+class Settup < Sinclair::Model
+  initialize_with :admin, :settings
 
   class << self
     def attribute_names
@@ -12,7 +10,7 @@ class Settup
 
     def all
       self.new(
-        admin: User.find_or_initialize_by({ admin: true }),
+        admin: User.admin.find_or_initialize_by({}),
         settings: ActiveSetting.all 
       )
     end
